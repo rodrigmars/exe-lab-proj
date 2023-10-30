@@ -13,7 +13,7 @@ void ExitProgram(char *input, int *attempts);
 
 void message();
 
-void MenuCredits(float *coin);
+void DisplayCreditsMenu(float *coin);
 
 int main()
 {
@@ -99,7 +99,7 @@ void RunningCreditCheck(char *input, float *coin)
     {
 
         system("cls");
-        MenuCredits(coin);
+        DisplayCreditsMenu(coin);
         GetCharInput(input, 2);
         system("pause");
 
@@ -162,7 +162,7 @@ void message()
     system("pause");
 }
 
-void MenuCredits(float *coin)
+void DisplayCreditsMenu(float *coin)
 {
     printf("\n\nTotal em créditos: %.2f\n\n", *coin);
     printf("Selecione uma operação [x]\n\n");
