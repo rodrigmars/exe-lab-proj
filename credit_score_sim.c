@@ -89,7 +89,7 @@ void ExitProgram(char *input, int *attempts)
 
 void RunningCreditCheck(char *input, float *coin)
 {
-    float value = 0.0;
+    float credits = 0.0;
 
     int run = 1;
 
@@ -109,42 +109,42 @@ void RunningCreditCheck(char *input, float *coin)
         switch (input[0])
         {
         case '1':
-            value = 15.5;
-            if (*coin < value)
+            credits = 15.5;
+            if (*coin < credits)
             {
                 message();
                 continue;
             }
 
-            *coin -= value;
+            *coin -= credits;
 
             break;
 
         case '2':
 
-            value = 25.5;
+            credits = 25.5;
 
-            if (*coin < value)
+            if (*coin < credits)
             {
                 message();
                 continue;
             }
 
-            *coin -= value;
+            *coin -= credits;
 
             break;
 
         case '3':
 
-            value = 50.5;
+            credits = 50.5;
 
-            if (*coin < value)
+            if (*coin < credits)
             {
                 message();
                 continue;
             }
 
-            *coin -= value;
+            *coin -= credits;
             break;
 
         case '4':
