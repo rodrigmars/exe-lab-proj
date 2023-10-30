@@ -17,7 +17,7 @@
 typedef struct
 {
     float credit;
-    int status;
+    int balance;
 } Credits;
 
 // function prototype
@@ -127,7 +127,7 @@ void RunningCreditCheck(char *input, float *coin)
             if (*coin < credits[0]->credit)
             {
                 message();
-                credits[0]->status = 0;
+                credits[0]->balance = 0;
                 continue;
             }
 
@@ -140,7 +140,7 @@ void RunningCreditCheck(char *input, float *coin)
             if (*coin < credits[1]->credit)
             {
                 message();
-                credits[1]->status = 0;
+                credits[1]->balance = 0;
                 continue;
             }
 
@@ -153,7 +153,7 @@ void RunningCreditCheck(char *input, float *coin)
             if (*coin < credits[2]->credit)
             {
                 message();
-                credits[2]->status = 0;
+                credits[2]->balance = 0;
                 continue;
             }
 
@@ -186,7 +186,7 @@ void DisplayCreditsMenu(float *coin, Credits credits[][2])
 
     for (size_t i = 0; i < 3; i++)
     {
-        if (credits[i]->status == 1)
+        if (credits[i]->credit <= *coin)
             printf(KGRN "[%i] > Crédito: ", i + 1);
         else
             printf(KRED "[%i] > Crédito: ", i + 1);
