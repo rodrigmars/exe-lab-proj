@@ -13,6 +13,8 @@ void ExitProgram(char *input, int *attempts);
 
 void message();
 
+void MenuCredits(float *coin);
+
 int main()
 {
     system("chcp 65001");
@@ -97,12 +99,7 @@ void RunningCreditCheck(char *input, float *coin)
     {
 
         system("cls");
-        printf("\n\nTotal em créditos: %.2f\n\n", *coin);
-        printf("Selecione uma operação [x]\n\n");
-        printf("[1] > Crédito: 15.5\n");
-        printf("[2] > Crédito: 25.5\n");
-        printf("[3] > Crédito: 50.5\n");
-        printf("[4] > Sair\n\n_");
+        MenuCredits(coin);
         GetCharInput(input, 2);
         system("pause");
 
@@ -163,4 +160,14 @@ void message()
     printf("Créditos insuficientes para esta operação.\n");
     printf("Escolha uma outra opção de crédito.\n\n");
     system("pause");
+}
+
+void MenuCredits(float *coin)
+{
+    printf("\n\nTotal em créditos: %.2f\n\n", *coin);
+    printf("Selecione uma operação [x]\n\n");
+    printf("[1] > Crédito: 15.5\n");
+    printf("[2] > Crédito: 25.5\n");
+    printf("[3] > Crédito: 50.5\n");
+    printf("[4] > Sair\n\n_");
 }
