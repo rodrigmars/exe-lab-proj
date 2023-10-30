@@ -21,9 +21,6 @@ int main()
 
     int attempts = 0;
 
-    RunningCreditCheck(input);
-
-    return 0;
     printf("\n\n****************************\n");
     printf(" ** SIMULADOR DE CRÉDITO ** \n");
     printf("  ************************ \n\n");
