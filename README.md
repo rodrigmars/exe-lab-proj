@@ -6,10 +6,10 @@ Atenção: Usar SO Windows para execução dos exemplos
 
 ## Compilando um programa com GCC (GNU Compiler Collection):
 ```C
-gcc .\exercise_01.c -o .\exercise_01
+gcc .\file.c -o .\file
 ```
 ## Execução:
 ```C
-.\exercise_01.exe
+.\file.exe
 ```
 
