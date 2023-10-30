@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <Windows.h>
 
-char GetInput(char *chr, int size)
+char GetCharInput(char *chr, int size)
 {
     int i = 0;
 
@@ -18,9 +18,9 @@ int main()
 
     char input[2];
 
-    printf("Você concorda?_");
+    printf("Você concorda?: ");
 
-    GetInput(input, 2);
+    GetCharInput(input, 2);
 
     if (input[0] == 'y' || input[0] == 'Y')
     {
