@@ -7,7 +7,7 @@
 // function prototype
 char GetCharInput(char *chr, int size);
 
-void RunningCreditCheck(char *input);
+void RunningCreditCheck(char *input, float *coin);
 
 void ExitProgram(char *input, int *attempts);
 
@@ -18,6 +18,8 @@ int main()
     system("chcp 65001");
 
     char input[2];
+
+    float coin = 120.0;
 
     int attempts = 0;
 
@@ -36,7 +38,7 @@ int main()
             ExitProgram(input, &attempts);
         else if (toupper(input[0]) == 'Y')
         {
-            RunningCreditCheck(input);
+            RunningCreditCheck(input, &coin);
             break;
         }
         else if (toupper(input[0]) == 'N')
@@ -85,16 +87,17 @@ void ExitProgram(char *input, int *attempts)
     }
 }
 
-void RunningCreditCheck(char *input)
+void RunningCreditCheck(char *input, float *coin)
 {
-    float coin = 120.0;
     float value = 0.0;
 
-    while (input)
+    int run = 1;
+
+    while (run)
     {
 
         system("cls");
-        printf("\n\nTotal em créditos: %.2f\n\n", coin);
+        printf("\n\nTotal em créditos: %.2f\n\n", *coin);
         printf("Selecione uma operação [x]\n\n");
         printf("[1] > Crédito: 15.5\n");
         printf("[2] > Crédito: 25.5\n");
@@ -107,25 +110,27 @@ void RunningCreditCheck(char *input)
         {
         case '1':
             value = 15.5;
-            if (coin < value)
+            if (*coin < value)
             {
                 message();
                 continue;
             }
 
-            coin -= value;
+            *coin -= value;
+
             break;
+
         case '2':
 
             value = 25.5;
 
-            if (coin < value)
+            if (*coin < value)
             {
                 message();
                 continue;
             }
 
-            coin -= value;
+            *coin -= value;
 
             break;
 
@@ -133,16 +138,19 @@ void RunningCreditCheck(char *input)
 
             value = 50.5;
 
-            if (coin < value)
+            if (*coin < value)
             {
                 message();
                 continue;
             }
-            coin -= value;
+
+            *coin -= value;
             break;
 
         case '4':
-            return;
+            run = 0;
+            break;
+
         default:
             printf("Opção incorreto!!!\n");
             system("pause");
