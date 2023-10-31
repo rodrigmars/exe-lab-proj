@@ -28,7 +28,7 @@ void DisplayTitle();
 
 void MainMenu(char *input, float *coin);
 
-void RunningCreditCheck(char *input, float *coin);
+void MenuCredit(char *input, float *coin);
 
 void ExitProgram(char *input);
 
@@ -85,7 +85,7 @@ void MainMenu(char *input, float *coin)
         }
         else if (toupper(input[0]) == 'Y')
         {
-            RunningCreditCheck(input, coin);
+            MenuCredit(input, coin);
             break;
         }
         else if (toupper(input[0]) == 'N')
@@ -133,7 +133,7 @@ void ExitProgram(char *input)
     }
 }
 
-void RunningCreditCheck(char *input, float *coin)
+void MenuCredit(char *input, float *coin)
 {
     Credits credits[3][2] = {{15.5, 1}, {25.5, 1}, {50.5, 1}};
 
