@@ -206,12 +206,9 @@ void DisplayCreditsMenu(float *coin, Credits credits[][2])
 
     for (size_t i = 0; i < 3; i++)
     {
-        if (credits[i]->credit <= *coin)
-            printf(KGRN "[%i] > Crédito: ", i + 1);
-        else
-            printf(KRED "[%i] > Crédito: ", i + 1);
+        credits[i]->credit <= *coin ? printf(KGRN) : printf(KRED);
 
-        printf("%.2f\n", credits[i]->credit);
+        printf("[%i] > Crédito: %.2f\n", i + 1, credits[i]->credit);
     }
 
     printf(KYEL "[4] > Sair\n\n_" KWHT);
