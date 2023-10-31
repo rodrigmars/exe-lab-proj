@@ -26,9 +26,9 @@ char GetCharInput(char *chr, int size);
 
 void DisplayTitle();
 
-void MainMenu(char *input, float *coin);
+void MainMenu(char *input, float *balance);
 
-void MenuCredit(char *input, float *coin);
+void MenuCredit(char *input, float *balance);
 
 void ExitProgram(char *input);
 
@@ -44,11 +44,11 @@ int main()
 
     char input[2];
 
-    float coin = 120.0;
+    float balance = 120.0;
 
     DisplayTitle();
 
-    MainMenu(input, &coin);
+    MainMenu(input, &balance);
 
     return 0;
 }
@@ -133,7 +133,7 @@ void ExitProgram(char *input)
     }
 }
 
-void MenuCredit(char *input, float *coin)
+void MenuCredit(char *input, float *balance)
 {
     Credits credits[3][2] = {{15.5, 1}, {25.5, 1}, {50.5, 1}};
 
@@ -144,47 +144,47 @@ void MenuCredit(char *input, float *coin)
     while (run)
     {
         system("cls");
-        DisplayCreditsMenu(coin, credits);
+        DisplayCreditsMenu(balance, credits);
         GetCharInput(input, 2);
         system("pause");
 
         switch (input[0])
         {
         case '1':
-            if (*coin < credits[0]->credit)
+            if (*balance < credits[0]->credit)
             {
                 message();
                 credits[0]->balance = 0;
                 continue;
             }
 
-            *coin -= credits[0]->credit;
+            *balance -= credits[0]->credit;
 
             break;
 
         case '2':
 
-            if (*coin < credits[1]->credit)
+            if (*balance < credits[1]->credit)
             {
                 message();
                 credits[1]->balance = 0;
                 continue;
             }
 
-            *coin -= credits[1]->credit;
+            *balance -= credits[1]->credit;
 
             break;
 
         case '3':
 
-            if (*coin < credits[2]->credit)
+            if (*balance < credits[2]->credit)
             {
                 message();
                 credits[2]->balance = 0;
                 continue;
             }
 
-            *coin -= credits[2]->credit;
+            *balance -= credits[2]->credit;
 
             break;
 
@@ -199,14 +199,14 @@ void MenuCredit(char *input, float *coin)
     }
 }
 
-void DisplayCreditsMenu(float *coin, Credits credits[][2])
+void DisplayCreditsMenu(float *balance, Credits credits[][2])
 {
-    printf(KYEL "\n\nTotal em créditos: " KGRN "%.2f\n\n", *coin);
+    printf(KYEL "\n\nTotal em créditos: " KGRN "%.2f\n\n", *balance);
     printf(KYEL "Selecione uma operação [x]\n\n");
 
     for (size_t i = 0; i < 3; i++)
     {
-        credits[i]->credit <= *coin ? printf(KGRN) : printf(KRED);
+        credits[i]->credit <= *balance ? printf(KGRN) : printf(KRED);
 
         printf("[%i] > Crédito: %.2f\n", i + 1, credits[i]->credit);
     }

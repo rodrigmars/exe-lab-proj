@@ -4,6 +4,7 @@ Este repo é um elaborado de exemplos básicos desenvolvidos na linguagem C, aqu
 
 Atenção: Usar SO Windows para execução dos exemplos
 
+
 ## Compilando um programa com GCC (GNU Compiler Collection):
 ```C
 gcc .\file.c -o .\file
@@ -13,3 +14,8 @@ gcc .\file.c -o .\file
 .\file.exe
 ```
 
+## Programas
+
+### Credit Score Sim
+
+O programa *credit_score_sim.c* demonstra o uso de menus com lógica enviando ponteiros para um motor de cálculo aritmético. A função deste código é escolher um crédito de acordo com o saldo disponível.
