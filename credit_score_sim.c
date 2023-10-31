@@ -21,7 +21,12 @@ typedef struct
 } Credits;
 
 // function prototype
+
 char GetCharInput(char *chr, int size);
+
+void DisplayTitle();
+
+void MainMenu(char *input, int *attempts, float *coin);
 
 void RunningCreditCheck(char *input, float *coin);
 
@@ -41,10 +46,28 @@ int main()
 
     int attempts = 0;
 
-    printf("\n\n****************************\n");
-    printf(" ** SIMULADOR DE CRÉDITO ** \n");
-    printf("  ************************ \n\n");
+    DisplayTitle();
 
+    MainMenu(input, &attempts, &coin);
+
+    return 0;
+}
+
+// function definition
+
+void DisplayTitle()
+{
+    printf("\n\n");
+    printf("****************************");
+    printf("\n");
+    printf(" ** SIMULADOR DE CRÉDITO ** ");
+    printf("\n");
+    printf("  ************************ ");
+    printf("\n\n");
+}
+
+void MainMenu(char *input, int *attempts, float *coin)
+{
     while (1)
     {
 
@@ -52,11 +75,11 @@ int main()
 
         GetCharInput(input, 2);
 
-        if (attempts == 2)
-            ExitProgram(input, &attempts);
+        if (*attempts == 2)
+            ExitProgram(input, attempts);
         else if (toupper(input[0]) == 'Y')
         {
-            RunningCreditCheck(input, &coin);
+            RunningCreditCheck(input, coin);
             break;
         }
         else if (toupper(input[0]) == 'N')
@@ -64,15 +87,11 @@ int main()
         else
         {
             printf("Opção incorreta.\n");
-            attempts++;
+            (*attempts)++;
             system("pause");
         }
     }
-
-    return 0;
 }
-
-// function definition
 
 char GetCharInput(char *chr, int size)
 {
