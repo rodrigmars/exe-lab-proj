@@ -40,6 +40,8 @@ int main()
 {
     system("chcp 65001");
 
+    system("cls");
+
     char input[2];
 
     float coin = 120.0;
@@ -120,7 +122,10 @@ void ExitProgram(char *input)
         system("pause");
 
         if (toupper(input[0]) == 'Y')
+        {
+            system("cls");
             exit(0);
+        }
         else if (toupper(input[0]) == 'N')
             break;
 
@@ -138,7 +143,6 @@ void RunningCreditCheck(char *input, float *coin)
 
     while (run)
     {
-
         system("cls");
         DisplayCreditsMenu(coin, credits);
         GetCharInput(input, 2);
