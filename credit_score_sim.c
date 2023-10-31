@@ -109,19 +109,22 @@ char GetCharInput(char *chr, int size)
 
 void ExitProgram(char *input)
 {
-    printf("Você excedeu o número de tentativas para esta ação.\n");
+    printf("\nVocê excedeu o número de tentativas para esta ação.\n");
+
     printf("Deseja encerrar o programa (y:sim) ou (n:não)?:");
+
     while (1)
     {
         GetCharInput(input, 2);
+
         system("pause");
 
         if (toupper(input[0]) == 'Y')
             exit(0);
         else if (toupper(input[0]) == 'N')
             break;
-        else
-            printf("Informe (y:sim) ou (n:não)?:");
+
+        printf("Informe (y:sim) ou (n:não)?:");
     }
 }
 
@@ -192,13 +195,6 @@ void RunningCreditCheck(char *input, float *coin)
     }
 }
 
-void message()
-{
-    printf("Créditos insuficientes para esta operação.\n");
-    printf("Escolha uma outra opção de crédito.\n\n");
-    system("pause");
-}
-
 void DisplayCreditsMenu(float *coin, Credits credits[][2])
 {
     printf(KYEL "\n\nTotal em créditos: " KGRN "%.2f\n\n", *coin);
@@ -215,4 +211,11 @@ void DisplayCreditsMenu(float *coin, Credits credits[][2])
     }
 
     printf(KYEL "[4] > Sair\n\n_" KWHT);
+}
+
+void message()
+{
+    printf("Créditos insuficientes para esta operação.\n");
+    printf("Escolha uma outra opção de crédito.\n\n");
+    system("pause");
 }
