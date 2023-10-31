@@ -26,11 +26,11 @@ char GetCharInput(char *chr, int size);
 
 void DisplayTitle();
 
-void MainMenu(char *input, int *attempts, float *coin);
+void MainMenu(char *input, float *coin);
 
 void RunningCreditCheck(char *input, float *coin);
 
-void ExitProgram(char *input, int *attempts);
+void ExitProgram(char *input);
 
 void message();
 
@@ -44,11 +44,9 @@ int main()
 
     float coin = 120.0;
 
-    int attempts = 0;
-
     DisplayTitle();
 
-    MainMenu(input, &attempts, &coin);
+    MainMenu(input, &coin);
 
     return 0;
 }
@@ -66,8 +64,11 @@ void DisplayTitle()
     printf("\n\n");
 }
 
-void MainMenu(char *input, int *attempts, float *coin)
+void MainMenu(char *input, float *coin)
 {
+
+    int attempts = 0;
+
     while (1)
     {
 
@@ -75,8 +76,11 @@ void MainMenu(char *input, int *attempts, float *coin)
 
         GetCharInput(input, 2);
 
-        if (*attempts == 2)
-            ExitProgram(input, attempts);
+        if (attempts == 2)
+        {
+            ExitProgram(input);
+            attempts = 0;
+        }
         else if (toupper(input[0]) == 'Y')
         {
             RunningCreditCheck(input, coin);
@@ -87,7 +91,7 @@ void MainMenu(char *input, int *attempts, float *coin)
         else
         {
             printf("Opção incorreta.\n");
-            (*attempts)++;
+            attempts++;
             system("pause");
         }
     }
@@ -103,7 +107,7 @@ char GetCharInput(char *chr, int size)
     chr[++i] = '\0';
 }
 
-void ExitProgram(char *input, int *attempts)
+void ExitProgram(char *input)
 {
     printf("Você excedeu o número de tentativas para esta ação.\n");
     printf("Deseja encerrar o programa (y:sim) ou (n:não)?:");
@@ -115,10 +119,7 @@ void ExitProgram(char *input, int *attempts)
         if (toupper(input[0]) == 'Y')
             exit(0);
         else if (toupper(input[0]) == 'N')
-        {
-            *attempts = 0;
             break;
-        }
         else
             printf("Informe (y:sim) ou (n:não)?:");
     }
