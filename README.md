@@ -2,7 +2,7 @@
 
 Este repo é um elaborado de exemplos básicos desenvolvidos na linguagem C, aqui você pode encontrar alguns conceitos básicos e caixas que ainda não foram abertas em sua jornada de estudo. 
 
->**Observação:** Para a execução dos exemplos utilizar *SO Windows*
+>**Observação:** Verificar o sistema operacional indicado no exercício.
 
 ## *Configurando ambiente*
 Instalação **+** configuração com 
@@ -14,6 +14,8 @@ Instalação **+** configuração com
 
 O programa ***credit_score_sim.c*** aplica lógica de menus para realizar operações com variáveis do tipo float. A função deste código é escolher um crédito de acordo com o saldo disponível para o débito.
 Habilidades necessárias com **structs** e **ponteiros** 
+
+**Sistema Operacional:** *Windows*
 
 ### Como executar:
 *Compilando:*
