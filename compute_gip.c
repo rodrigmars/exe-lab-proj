@@ -32,7 +32,7 @@ void Display(char label, int *val, int *calc, int size)
             printf("(%i %c %i = %i)", val[i], (val[i] < val[i + 1] ? '*' : '/'), val[i + 1], calc[i]);
 
             if (i < 2)
-                printf(" | ");
+                printf(" |> ");
         }
     }
 
