@@ -5,7 +5,8 @@ Este repo é um elaborado de exemplos básicos desenvolvidos na linguagem C, aqu
 >**Observação:** Para a execução dos exemplos utilizar *SO Windows*
 
 ## *Configurando ambiente*
-Instalação **+** configuração com **[mingw-w64](https://www.mingw-w64.org/downloads/)**
+Instalação **+** configuração com 
+<a href="https://www.mingw-w64.org/downloads/" target="_blank">***mingw-w64***</a>
 
 ## *Exemplos*
 
