@@ -17,24 +17,24 @@
 typedef struct
 {
     float credit;
-    int balance;
+    int available_balance;
 } Credits;
 
 // function prototype
 
-char GetCharInput(char *chr, int size);
+char GetCharInput(char *input, int size);
 
 void DisplayTitle();
 
-void MainMenu(char *input, float *balance);
+void MainMenu(char *input, float *current_balance);
 
-void MenuCredit(char *input, float *balance);
+void MenuCredit(char *input, float *current_balance);
 
 void ExitProgram(char *input);
 
 void message();
 
-void DisplayCreditsMenu(float *coin, Credits credits[][2]);
+void DisplayCreditsMenu(float *current_balance, Credits credits[][2]);
 
 int main()
 {
@@ -44,11 +44,11 @@ int main()
 
     char input[2];
 
-    float balance = 120.0;
+    float current_balance = 120.0;
 
     DisplayTitle();
 
-    MainMenu(input, &balance);
+    MainMenu(input, &current_balance);
 
     return 0;
 }
@@ -66,7 +66,7 @@ void DisplayTitle()
     printf("\n\n");
 }
 
-void MainMenu(char *input, float *coin)
+void MainMenu(char *input, float *current_balance)
 {
 
     int attempts = 0;
@@ -74,7 +74,7 @@ void MainMenu(char *input, float *coin)
     while (1)
     {
 
-        printf("Deseja transferir alguns créditos? (y:sim) ou (n:não):");
+        printf("Deseja adquirir alguns créditos? (y:sim) ou (n:não):");
 
         GetCharInput(input, 2);
 
@@ -85,7 +85,7 @@ void MainMenu(char *input, float *coin)
         }
         else if (toupper(input[0]) == 'Y')
         {
-            MenuCredit(input, coin);
+            MenuCredit(input, current_balance);
             break;
         }
         else if (toupper(input[0]) == 'N')
@@ -99,14 +99,14 @@ void MainMenu(char *input, float *coin)
     }
 }
 
-char GetCharInput(char *chr, int size)
+char GetCharInput(char *input, int size)
 {
     int i = 0;
 
-    while ((chr[i] = getchar()) != '\n' && i < size)
+    while ((input[i] = getchar()) != '\n' && i < size)
         i++;
 
-    chr[++i] = '\0';
+    input[++i] = '\0';
 }
 
 void ExitProgram(char *input)
@@ -133,7 +133,7 @@ void ExitProgram(char *input)
     }
 }
 
-void MenuCredit(char *input, float *balance)
+void MenuCredit(char *input, float *current_balance)
 {
     Credits credits[3][2] = {{15.5, 1}, {25.5, 1}, {50.5, 1}};
 
@@ -144,47 +144,47 @@ void MenuCredit(char *input, float *balance)
     while (run)
     {
         system("cls");
-        DisplayCreditsMenu(balance, credits);
+        DisplayCreditsMenu(current_balance, credits);
         GetCharInput(input, 2);
         system("pause");
 
         switch (input[0])
         {
         case '1':
-            if (*balance < credits[0]->credit)
+            if (*current_balance < credits[0]->credit)
             {
                 message();
-                credits[0]->balance = 0;
+                credits[0]->available_balance = 0;
                 continue;
             }
 
-            *balance -= credits[0]->credit;
+            *current_balance -= credits[0]->credit;
 
             break;
 
         case '2':
 
-            if (*balance < credits[1]->credit)
+            if (*current_balance < credits[1]->credit)
             {
                 message();
-                credits[1]->balance = 0;
+                credits[1]->available_balance = 0;
                 continue;
             }
 
-            *balance -= credits[1]->credit;
+            *current_balance -= credits[1]->credit;
 
             break;
 
         case '3':
 
-            if (*balance < credits[2]->credit)
+            if (*current_balance < credits[2]->credit)
             {
                 message();
-                credits[2]->balance = 0;
+                credits[2]->available_balance = 0;
                 continue;
             }
 
-            *balance -= credits[2]->credit;
+            *current_balance -= credits[2]->credit;
 
             break;
 
@@ -216,7 +216,6 @@ void DisplayCreditsMenu(float *balance, Credits credits[][2])
 
 void message()
 {
-    printf("Créditos insuficientes para esta operação.\n");
-    printf("Escolha uma outra opção de crédito.\n\n");
+    printf("Saldo insuficiente para esta operação.\n\n");
     system("pause");
 }
