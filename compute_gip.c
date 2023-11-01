@@ -1,38 +1,45 @@
 #include <stdio.h>
 
-void ExecuteCalc(char label, int *val, int *calc, int size);
+void ExecuteOperationGIP(char label, int *val, int *calc, int size);
 
-void Display(char label, int *calc, int size);
+void Display(char label, int *val, int *calc, int size);
 
 int main()
 {
+    int calc[3];
+
+    int size = 3;
+
     int x[] = {3, 6, 2, 30};
 
     int y[] = {90, 45, 135, 9};
 
-    int calc[3];
+    ExecuteOperationGIP('x', x, calc, size);
 
-    ExecuteCalc('x', x, calc, 3);
-
-    ExecuteCalc('y', y, calc, 3);
+    ExecuteOperationGIP('y', y, calc, size);
 
     return 0;
 }
 
-void Display(char label, int *calc, int size)
+void Display(char label, int *val, int *calc, int size)
 {
-    printf("%c: ", label);
+    printf("\n%c: ", label);
 
-    for (size_t i = 0; i < size; i++)
-        if (i < 2)
-            printf("%i%c ", calc[i], ',');
-        else
-            printf("%i", calc[i]);
+    for (size_t i = 0; i < 4; i++)
+    {
+        if (i < 3)
+        {
+            printf("(%i %c %i = %i)", val[i], (val[i] < val[i + 1] ? '*' : '/'), val[i + 1], calc[i]);
+
+            if (i < 2)
+                printf(" | ");
+        }
+    }
 
     printf("\n");
 }
 
-void ExecuteCalc(char label, int *val, int *calc, int size)
+void ExecuteOperationGIP(char label, int *val, int *calc, int size)
 {
     for (size_t i = 0; i < 4; i++)
     {
@@ -42,5 +49,5 @@ void ExecuteCalc(char label, int *val, int *calc, int size)
         }
     }
 
-    Display(label, calc, size);
+    Display(label, val, calc, size);
 }
